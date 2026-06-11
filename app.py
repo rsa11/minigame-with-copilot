@@ -33,6 +33,7 @@ def determine_winner(player_choice, computer_choice):
 def play_game():
     player_score = 0
     computer_score = 0
+    tie_count = 0
     while True:
         raw_choice = input("Enter rock, paper, or scissors (lowercase only): ")
         if raw_choice != raw_choice.lower():
@@ -47,6 +48,7 @@ def play_game():
         winner = determine_winner(player_choice, computer_choice)
         if winner == "tie":
             print("It's a tie!")
+            tie_count += 1
         elif winner == "player":
             print("You win!")
             player_score += 1
@@ -66,5 +68,7 @@ def play_game():
         if play_again != "yes":
             break
     print(f"Final Score - You: {player_score}, Computer: {computer_score}")
+    total_rounds = player_score + computer_score + tie_count
+    print(f"Final results: Wins: {player_score}, Losses: {computer_score}, Ties: {tie_count}, Total rounds: {total_rounds}")
 play_game()     
 
